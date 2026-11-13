@@ -217,6 +217,41 @@ document.addEventListener("DOMContentLoaded", () => {
     viewModeText.textContent = isContinuous ? "切換單頁演示模式" : "全頁流暢瀏覽";
   });
 
+  // QR Code 彈跳視窗控制
+  const btnQrCode = document.getElementById("btnQrCode");
+  const qrModal = document.getElementById("qrModal");
+  const qrModalCloseBtn = document.getElementById("qrModalCloseBtn");
+
+  function openQrModal() {
+    if (qrModal) qrModal.classList.add("active");
+  }
+  function closeQrModal() {
+    if (qrModal) qrModal.classList.remove("active");
+  }
+
+  if (btnQrCode) btnQrCode.addEventListener("click", openQrModal);
+  if (qrModalCloseBtn) qrModalCloseBtn.addEventListener("click", closeQrModal);
+  if (qrModal) {
+    qrModal.addEventListener("click", (e) => {
+      if (e.target === qrModal) closeQrModal();
+    });
+  }
+
+  // 複製網址按鈕
+  document.querySelectorAll(".btn-copy-url").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const targetId = btn.getAttribute("data-target");
+      const inputEl = document.getElementById(targetId);
+      if (inputEl) {
+        navigator.clipboard.writeText(inputEl.value).then(() => {
+          const oldText = btn.textContent;
+          btn.textContent = "已複製！";
+          setTimeout(() => { btn.textContent = oldText; }, 2000);
+        });
+      }
+    });
+  });
+
   // 海報預覽 Modal 控制
   const btnShowPoster = document.getElementById("btnShowPoster");
   const posterModal = document.getElementById("posterModal");

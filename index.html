@@ -56,6 +56,11 @@
         </div>
       </div>
 
+      <!-- 手機 QR Code 彈出按鈕 -->
+      <button class="ctrl-btn icon-only-btn" id="btnQrCode" title="手機掃碼查看公開網址與短網址">
+        <span>📱</span>
+      </button>
+
       <!-- 全螢幕切換 -->
       <button class="ctrl-btn icon-only-btn" id="btnFullscreen" title="切換全螢幕檢視">
         <span id="fsIcon">⛶</span>
@@ -1256,6 +1261,38 @@
           <button class="btn-secondary" id="btnExportMarkdown">📋 複製為 Markdown</button>
           <button class="btn-secondary" id="btnPrintRecords">🖨️ 列印此紀錄表</button>
           <button class="btn-danger" id="btnResetRecords">🔄 重設範例資料</button>
+        </div>
+      </div>
+
+      <!-- QR Code 掃描彈跳視窗 (Modal) -->
+      <div class="modal-overlay" id="qrModal">
+        <div class="modal-card qr-modal-card text-center">
+          <div class="modal-header">
+            <h3>📱 手機掃碼或分享公開網址</h3>
+            <button class="modal-close-btn" id="qrModalCloseBtn">&times;</button>
+          </div>
+          <div class="modal-body">
+            <div class="qr-img-wrapper">
+              <img src="qrcode.png" alt="評鑑網頁 QR Code" class="qr-code-img">
+            </div>
+            <p class="qr-hint">評鑑委員與師生可直接使用手機相機掃描，立即在行動裝置同步查閱！</p>
+            
+            <div class="url-share-group">
+              <label>🔗 GitHub Pages 公開完整網址：</label>
+              <div class="url-copy-box">
+                <input type="text" readonly value="https://yaoshuchin.github.io/1151113-nantou-art-eval/" id="fullUrlInput">
+                <button type="button" class="btn-primary btn-copy-url" data-target="fullUrlInput">複製</button>
+              </div>
+            </div>
+
+            <div class="url-share-group">
+              <label>⚡ 快速短網址 (TinyURL)：</label>
+              <div class="url-copy-box">
+                <input type="text" readonly value="https://tinyurl.com/2y3hace2" id="shortUrlInput">
+                <button type="button" class="btn-primary btn-copy-url" data-target="shortUrlInput">複製</button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 

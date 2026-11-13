@@ -10,4 +10,13 @@
 - **🎨 客製化設定**：最上方提供「字體大小（大/中/小）」與「布景主題（淺/深/藍/綠）」即時切換。
 
 ## 線上公開網址 (GitHub Pages)
-- **正式發布網址**：https://yaoshuchin.github.io/1151113-nantou-art-eval/
+- **完整公開網址**：https://yaoshuchin.github.io/1151113-nantou-art-eval/
+- **快速短網址**：https://tinyurl.com/2y3hace2 （備用短網址：https://is.gd/pXbyOS ）
+
+## 行動裝置掃碼 QR Code
+<p align="center">
+  <img src="qrcode.png" width="260" alt="115南投國中美術班評鑑系統 QR Code">
+  <br>
+  <em>評鑑委員與師生可直接使用手機掃描開啟</em>
+</p>
+

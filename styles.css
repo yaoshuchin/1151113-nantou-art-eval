@@ -2190,6 +2190,63 @@ html[data-theme="dark"] .pyramid-level.l7 { background: #113327; border-color: #
   text-align: center;
 }
 
+.qr-modal-card {
+  max-width: 480px;
+}
+
+.qr-img-wrapper {
+  background: #ffffff;
+  padding: 1rem;
+  border-radius: var(--radius-lg);
+  display: inline-block;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+  margin-bottom: 1rem;
+}
+
+.qr-code-img {
+  width: 240px;
+  height: 240px;
+  display: block;
+}
+
+.qr-hint {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  margin-bottom: 1.25rem;
+}
+
+.url-share-group {
+  text-align: left;
+  margin-bottom: 1rem;
+}
+
+.url-share-group label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  display: block;
+  margin-bottom: 0.35rem;
+}
+
+.url-copy-box {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.url-copy-box input {
+  flex: 1;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+  padding: 0.45rem 0.75rem;
+  border-radius: var(--radius-md);
+  font-size: 0.9rem;
+}
+
+.btn-copy-url {
+  padding: 0.45rem 0.9rem;
+  font-size: 0.85rem;
+}
+
 /* ========================================================
    列印模式專用 CSS
    ======================================================== */
