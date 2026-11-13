@@ -73,6 +73,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const tabButtons = document.querySelectorAll(".tab-btn");
   const viewPanels = {
     slides: document.getElementById("view-slides"),
+    showcase: document.getElementById("view-showcase"),
     qa: document.getElementById("view-qa"),
     agenda: document.getElementById("view-agenda"),
     records: document.getElementById("view-records"),
@@ -283,8 +284,95 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // 鍵盤導航 (方向鍵左右 / 空白鍵)
+  // ==========================================
+  // 6. 🌟 E成果網：分類篩選與全螢幕 Lightbox 燈箱
+  // ==========================================
+  const scFilterBtns = document.querySelectorAll(".sc-filter-btn");
+  const scFeatureCards = document.querySelectorAll(".showcase-feature-card");
+
+  scFilterBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+      scFilterBtns.forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      const filter = btn.getAttribute("data-sc-filter");
+
+      scFeatureCards.forEach(card => {
+        const cat = card.getAttribute("data-sc-cat");
+        if (filter === "all" || cat === filter) {
+          card.style.display = "block";
+        } else {
+          card.style.display = "none";
+        }
+      });
+    });
+  });
+
+  // Lightbox 互動燈箱
+  const lightboxModal = document.getElementById("lightboxModal");
+  const lightboxImg = document.getElementById("lightboxImg");
+  const lightboxCaption = document.getElementById("lightboxCaption");
+  const lightboxCloseBtn = document.getElementById("lightboxCloseBtn");
+  const lightboxPrevBtn = document.getElementById("lightboxPrevBtn");
+  const lightboxNextBtn = document.getElementById("lightboxNextBtn");
+
+  const zoomableItems = Array.from(document.querySelectorAll(".zoomable"));
+  let currentZoomIndex = 0;
+
+  function openLightbox(index) {
+    if (!lightboxModal || zoomableItems.length === 0) return;
+    if (index < 0) index = zoomableItems.length - 1;
+    if (index >= zoomableItems.length) index = 0;
+    currentZoomIndex = index;
+
+    const item = zoomableItems[currentZoomIndex];
+    const imgSrc = item.getAttribute("data-img") || item.querySelector("img")?.src;
+    const caption = item.getAttribute("data-caption") || item.querySelector(".gt-label")?.textContent || "";
+
+    if (lightboxImg) lightboxImg.src = imgSrc;
+    if (lightboxCaption) lightboxCaption.textContent = caption;
+    lightboxModal.classList.add("active");
+  }
+
+  function closeLightbox() {
+    if (lightboxModal) lightboxModal.classList.remove("active");
+  }
+
+  zoomableItems.forEach((item, idx) => {
+    item.addEventListener("click", () => {
+      openLightbox(idx);
+    });
+  });
+
+  if (lightboxCloseBtn) lightboxCloseBtn.addEventListener("click", closeLightbox);
+  if (lightboxPrevBtn) lightboxPrevBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    openLightbox(currentZoomIndex - 1);
+  });
+  if (lightboxNextBtn) lightboxNextBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    openLightbox(currentZoomIndex + 1);
+  });
+  if (lightboxModal) {
+    lightboxModal.addEventListener("click", (e) => {
+      if (e.target === lightboxModal || e.target.classList.contains("lightbox-container")) {
+        closeLightbox();
+      }
+    });
+  }
+
+  // 鍵盤導航 (方向鍵左右 / 空白鍵) 與 Lightbox 按鍵監聽
   window.addEventListener("keydown", (e) => {
+    if (lightboxModal && lightboxModal.classList.contains("active")) {
+      if (e.key === "Escape") {
+        closeLightbox();
+      } else if (e.key === "ArrowLeft") {
+        openLightbox(currentZoomIndex - 1);
+      } else if (e.key === "ArrowRight") {
+        openLightbox(currentZoomIndex + 1);
+      }
+      return;
+    }
+
     if (!viewPanels.slides.classList.contains("active")) return;
     if (e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA" || e.target.tagName === "SELECT") return;
 

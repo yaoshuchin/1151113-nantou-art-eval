@@ -2248,6 +2248,531 @@ html[data-theme="dark"] .pyramid-level.l7 { background: #113327; border-color: #
 }
 
 /* ========================================================
+   🌟 E成果網：辦學成果博覽會專屬樣式 (Showcase Web)
+   ======================================================== */
+.showcase-hero-banner {
+  background: var(--hero-bg);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-xl);
+  padding: 2.5rem 2rem;
+  box-shadow: var(--card-shadow);
+  margin-bottom: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.sh-badge-row {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.sh-pill {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--radius-xl);
+}
+
+.sh-pill.highlight {
+  background: var(--accent);
+  color: #ffffff;
+  border-color: var(--accent);
+}
+
+.sh-title {
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: var(--text-primary);
+  line-height: 1.25;
+  margin-bottom: 0.6rem;
+}
+
+.sh-subtitle {
+  font-size: 1.15rem;
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+}
+
+.sh-stats-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 1rem;
+}
+
+.sh-stat-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem 1rem;
+  text-align: center;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+  transition: transform var(--transition-fast), border-color var(--transition-fast);
+}
+
+.sh-stat-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--accent);
+}
+
+.sh-stat-card .stat-icon {
+  font-size: 1.8rem;
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.sh-stat-card .stat-number {
+  font-size: 1.9rem;
+  font-weight: 900;
+  color: var(--accent-dark);
+  line-height: 1.1;
+  margin-bottom: 0.25rem;
+}
+
+.sh-stat-card .stat-number small {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.sh-stat-card .stat-label {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+/* 篩選工具列 */
+.showcase-filter-toolbar {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1rem 1.25rem;
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  box-shadow: var(--card-shadow);
+}
+
+.filter-hint {
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  white-space: nowrap;
+}
+
+.filter-pills-group {
+  display: flex;
+  gap: 0.45rem;
+  flex-wrap: wrap;
+}
+
+.sc-filter-btn {
+  background: var(--bg-primary);
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+  padding: 0.4rem 0.85rem;
+  border-radius: var(--radius-xl);
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.sc-filter-btn:hover,
+.sc-filter-btn.active {
+  background: var(--accent);
+  color: #ffffff;
+  border-color: var(--accent);
+  box-shadow: 0 2px 8px rgba(var(--accent-rgb), 0.25);
+}
+
+/* 成果展示卡片大區塊 */
+.showcase-sections-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.showcase-feature-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  padding: 2.5rem;
+  box-shadow: var(--card-shadow);
+  transition: border-color var(--transition-fast);
+}
+
+.sfc-header {
+  margin-bottom: 1.5rem;
+}
+
+.sfc-category {
+  display: inline-block;
+  background: var(--accent-light);
+  color: var(--accent-dark);
+  font-size: 0.85rem;
+  font-weight: 800;
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-sm);
+  margin-bottom: 0.5rem;
+}
+
+.sfc-header h3 {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.sfc-header p {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+}
+
+/* 圖片容器與放大效果 */
+.sfc-visual-main {
+  margin-bottom: 2rem;
+}
+
+.sfc-dual-visuals {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.sfc-img-box {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  background: #000;
+  cursor: pointer;
+}
+
+.sfc-responsive-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.sfc-img-box:hover .sfc-responsive-img {
+  transform: scale(1.015);
+}
+
+.zoom-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(180deg, transparent, rgba(0,0,0,0.75));
+  padding: 0.75rem;
+  text-align: center;
+  color: #ffffff;
+  font-size: 0.85rem;
+  font-weight: 700;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.sfc-img-box:hover .zoom-overlay {
+  opacity: 1;
+}
+
+/* 四點細節卡片網格 */
+.sfc-details-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.25rem;
+}
+
+.sfc-point-card {
+  background: var(--bg-primary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  transition: transform var(--transition-fast);
+}
+
+.sfc-point-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--accent);
+}
+
+.point-icon {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.sfc-point-card h4 {
+  font-size: 1.15rem;
+  margin-bottom: 0.4rem;
+  color: var(--text-primary);
+}
+
+.sfc-point-card p {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* 八大工坊清單網格 */
+.spaces-showcase-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1rem;
+}
+
+.ssl-card {
+  background: var(--bg-primary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+}
+
+.ssl-card.special {
+  border: 2px solid var(--accent);
+  background: var(--hero-bg);
+}
+
+.ssl-num {
+  font-size: 1.4rem;
+  font-weight: 900;
+  color: var(--accent);
+  display: block;
+  margin-bottom: 0.2rem;
+}
+
+.ssl-card h4 {
+  font-size: 1.05rem;
+  margin-bottom: 0.35rem;
+}
+
+.ssl-card p {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+/* 師資互補總結盒 */
+.teachers-summary-box {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  background: var(--bg-primary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+}
+
+.ts-col h4 {
+  font-size: 1.1rem;
+  color: var(--accent-dark);
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.35rem;
+  border-bottom: 2px solid var(--accent-light);
+}
+
+.ts-col ul {
+  padding-left: 1.25rem;
+}
+
+.ts-col li {
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-primary);
+}
+
+/* 榮耀茶會說明條 */
+.glory-story-box {
+  background: var(--hero-bg);
+  border: 2px solid var(--accent);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.gsb-icon {
+  font-size: 3rem;
+  flex-shrink: 0;
+}
+
+.gsb-text h4 {
+  font-size: 1.25rem;
+  color: var(--accent-dark);
+  margin-bottom: 0.25rem;
+}
+
+.gsb-text p {
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  line-height: 1.6;
+}
+
+/* 16 篇章全景藝廊網格 */
+.gallery-thumbnails-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+}
+
+.gallery-thumb-item {
+  background: var(--bg-primary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  cursor: pointer;
+  transition: transform var(--transition-fast), border-color var(--transition-fast);
+}
+
+.gallery-thumb-item:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+}
+
+.gallery-thumb-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.gt-label {
+  display: block;
+  padding: 0.65rem 0.85rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  background: var(--bg-card);
+  border-top: 1px solid var(--border);
+}
+
+/* ========================================================
+   全螢幕 Lightbox 燈箱元件樣式
+   ======================================================== */
+.lightbox-overlay {
+  background: rgba(0, 0, 0, 0.88);
+  backdrop-filter: blur(8px);
+  z-index: 3000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.lightbox-overlay.active {
+  display: flex;
+}
+
+.lightbox-container {
+  position: relative;
+  max-width: 95vw;
+  max-height: 95vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lightbox-content {
+  text-align: center;
+  max-width: 1200px;
+  position: relative;
+}
+
+.lightbox-img {
+  max-width: 90vw;
+  max-height: 82vh;
+  object-fit: contain;
+  border-radius: var(--radius-md);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  display: block;
+  margin: 0 auto;
+}
+
+.lightbox-caption {
+  margin-top: 0.75rem;
+  color: #f8fafc;
+  font-size: 1.05rem;
+  font-weight: 700;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 0.4rem 1rem;
+  border-radius: var(--radius-xl);
+  display: inline-block;
+}
+
+.lightbox-close-btn {
+  position: absolute;
+  top: -2.5rem;
+  right: 0;
+  background: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  border: none;
+  font-size: 2rem;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--transition-fast);
+}
+
+.lightbox-close-btn:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.lightbox-nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+  border: none;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+  z-index: 10;
+}
+
+.lightbox-nav-btn:hover {
+  background: var(--accent);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.lightbox-nav-btn.prev {
+  left: -4rem;
+}
+
+.lightbox-nav-btn.next {
+  right: -4rem;
+}
+
+@media (max-width: 860px) {
+  .lightbox-nav-btn.prev { left: 0.5rem; }
+  .lightbox-nav-btn.next { right: 0.5rem; }
+  .sfc-dual-visuals,
+  .teachers-summary-box {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ========================================================
    模式 E：二維碼與短網址專區 (Digital Share)
    ======================================================== */
 .share-cards-grid {
