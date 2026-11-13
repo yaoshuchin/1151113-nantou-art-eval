@@ -17,7 +17,7 @@
       </div>
     </div>
 
-    <!-- 模式切換按鈕區 (簡報 / B / C / D) -->
+    <!-- 模式切換按鈕區 (簡報 / B / C / D / 二維碼與短網址) -->
     <nav class="mode-tabs" aria-label="展示模式切換">
       <button class="tab-btn active" data-mode="slides" title="A模式：完整簡報網頁化展示">
         <span class="icon">📊</span> 簡報展示
@@ -30,6 +30,9 @@
       </button>
       <button class="tab-btn" data-mode="records" title="D模式：委員建議現場速記與追蹤">
         <span class="icon">📝</span> D模式：現場紀錄
+      </button>
+      <button class="tab-btn" data-mode="share" title="數位分享：二維碼與短網址專區">
+        <span class="icon">📱</span> 二維碼與短網址
       </button>
     </nav>
 
@@ -1402,6 +1405,147 @@
         <div class="summary-item">
           <span class="sm-lbl">列入改善追蹤：</span>
           <strong id="sumTracking" class="text-warning">0</strong> 筆
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- 模式 E：二維碼與短網址專區 (Digital Share)     -->
+    <!-- ========================================== -->
+    <section id="view-share" class="view-panel">
+      <div class="section-hero">
+        <div class="section-title-wrap">
+          <span class="section-tag">Digital Access ｜ 數位存取與行動分享</span>
+          <h2>📱 115南投國中美術班評鑑 — 二維碼與短網址專區</h2>
+          <p>提供評鑑委員、長官及全體師生隨掃即讀，免安裝任何軟體或 App，全面支援手機、平板與筆電跨螢幕即時參閱！</p>
+        </div>
+        <div class="records-actions-bar">
+          <button class="btn-primary" id="btnPrintShareCard">🖨️ 一鍵列印評鑑迎賓桌卡</button>
+          <a href="qrcode.png" download="115南投國中美術班評鑑-QR碼.png" class="btn-secondary" style="text-decoration:none;">⬇️ 下載官方完整 QR Code</a>
+          <a href="qrcode_tinyurl.png" download="115南投國中美術班評鑑-短網址QR碼.png" class="btn-secondary" style="text-decoration:none;">⬇️ 下載極速短網址 QR Code</a>
+          <a href="https://github.com/yaoshuchin/1151113-nantou-art-eval" target="_blank" class="btn-secondary" style="text-decoration:none;">📂 GitHub 原始碼倉庫</a>
+        </div>
+      </div>
+
+      <!-- 核心雙 QR Code 展區 -->
+      <div class="share-cards-grid">
+        <!-- 卡片 1: 完整官方網址 -->
+        <div class="share-card official-share">
+          <div class="sc-badge">官方公開網站</div>
+          <div class="sc-header">
+            <h3>🌐 GitHub Pages 完整公開網址</h3>
+            <span class="sc-desc">永久有效 ‧ 高清無壓縮 ‧ 官方專屬網域</span>
+          </div>
+          <div class="sc-qr-box">
+            <img src="qrcode.png" alt="南投國中美術班評鑑系統 完整網址 QR Code" class="sc-qr-img">
+            <span class="sc-qr-caption">手機相機直接掃描開啟</span>
+          </div>
+          <div class="sc-url-box">
+            <label>網址連結：</label>
+            <div class="input-with-btn">
+              <input type="text" readonly value="https://yaoshuchin.github.io/1151113-nantou-art-eval/" id="pageShareFullUrl">
+              <button class="btn-primary btn-copy-url" data-target="pageShareFullUrl">複製網址</button>
+            </div>
+          </div>
+          <div class="sc-footer-actions">
+            <a href="https://yaoshuchin.github.io/1151113-nantou-art-eval/" target="_blank" class="sc-link-btn">在新分頁開啟系統 ↗</a>
+          </div>
+        </div>
+
+        <!-- 卡片 2: 極速短網址 -->
+        <div class="share-card short-share">
+          <div class="sc-badge accent">極速行動短網址</div>
+          <div class="sc-header">
+            <h3>⚡ TinyURL 專屬極速短網址</h3>
+            <span class="sc-desc">簡短好記 ‧ 方便公文傳閱與現場大螢幕投影輸入</span>
+          </div>
+          <div class="sc-qr-box">
+            <img src="qrcode_tinyurl.png" alt="南投國中美術班評鑑系統 短網址 QR Code" class="sc-qr-img">
+            <span class="sc-qr-caption">短字串高識別掃碼</span>
+          </div>
+          <div class="sc-url-box">
+            <label>主要短網址：</label>
+            <div class="input-with-btn">
+              <input type="text" readonly value="https://tinyurl.com/2y3hace2" id="pageShareTinyUrl">
+              <button class="btn-primary btn-copy-url" data-target="pageShareTinyUrl">複製短網址</button>
+            </div>
+            <label style="margin-top:0.75rem;">備用短網址：</label>
+            <div class="input-with-btn">
+              <input type="text" readonly value="https://is.gd/pXbyOS" id="pageShareIsgdUrl">
+              <button class="btn-secondary btn-copy-url" data-target="pageShareIsgdUrl">複製備用</button>
+            </div>
+          </div>
+          <div class="sc-footer-actions">
+            <a href="https://tinyurl.com/2y3hace2" target="_blank" class="sc-link-btn">測試短網址跳轉 ↗</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 實體評鑑會場桌卡 / 投影輸出立牌區 -->
+      <div class="printable-table-card" id="printShareSection">
+        <div class="ptc-header">
+          <div class="ptc-emblem">🎨</div>
+          <div class="ptc-title-group">
+            <h3>南投縣立南投國民中學 115 學年度藝術才能班訪視評鑑</h3>
+            <p class="ptc-slogan">「孕育一棵藝術大樹」— 評鑑簡報與訪視系統行動查閱立牌</p>
+          </div>
+        </div>
+        <div class="ptc-body">
+          <div class="ptc-qr-col">
+            <img src="qrcode.png" alt="評鑑立牌 QR Code" class="ptc-qr-img">
+            <strong>請使用手機相機掃描</strong>
+          </div>
+          <div class="ptc-info-col">
+            <div class="ptc-info-item">
+              <span class="ptc-tag">簡報與系統網址</span>
+              <span class="ptc-url-text">https://tinyurl.com/2y3hace2</span>
+            </div>
+            <div class="ptc-info-item">
+              <span class="ptc-tag">系統收錄內容</span>
+              <ul class="ptc-list">
+                <li>📊 16 頁完整網頁化簡報（附校長口頭報告重點）</li>
+                <li>💡 評鑑委員 8 大核心提問模擬與應答佐證數據</li>
+                <li>🗺️ 今日訪視時程、8大基地實地走訪動線與司儀講稿</li>
+                <li>📝 評鑑委員現場提問與建議即時紀錄表單</li>
+              </ul>
+            </div>
+            <div class="ptc-welcome-sign">
+              南投國中全體師生 誠摯敬迎 評鑑委員蒞校指導
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 相關下載資源區塊 -->
+      <div class="resources-download-block">
+        <h3 class="sub-block-title">📦 本次評鑑數位資源下載專區</h3>
+        <div class="download-grid">
+          <div class="dl-card">
+            <div class="dl-icon">📄</div>
+            <div class="dl-info">
+              <h4>115南投國中美術班評鑑--簡報.pdf</h4>
+              <p>原始簡報投影片檔案（20.8 MB，高解析度彩色版）</p>
+              <a href="115南投國中美術班評鑑--簡報.pdf" download class="dl-btn">下載原始 PDF 簡報 ⬇</a>
+            </div>
+          </div>
+
+          <div class="dl-card">
+            <div class="dl-icon">🖼️</div>
+            <div class="dl-info">
+              <h4>南投國中藝才班評鑑歡迎海報-橫式螢幕展示版.png</h4>
+              <p>迎賓大廳與電視牆專用橫式 16:9 展示海報（323 KB）</p>
+              <a href="南投國中藝才班評鑑歡迎海報-橫式螢幕展示版.png" download class="dl-btn">下載迎賓海報圖檔 ⬇</a>
+            </div>
+          </div>
+
+          <div class="dl-card">
+            <div class="dl-icon">📱</div>
+            <div class="dl-info">
+              <h4>評鑑系統高解析度二維碼圖檔 (qrcode.png)</h4>
+              <p>600×600 PNG 無損清晰圖檔，適合印刷與排版</p>
+              <a href="qrcode.png" download="南投國中藝才班評鑑-QR碼.png" class="dl-btn">下載 QR Code 圖檔 ⬇</a>
+            </div>
+          </div>
         </div>
       </div>
     </section>

@@ -75,7 +75,8 @@ document.addEventListener("DOMContentLoaded", () => {
     slides: document.getElementById("view-slides"),
     qa: document.getElementById("view-qa"),
     agenda: document.getElementById("view-agenda"),
-    records: document.getElementById("view-records")
+    records: document.getElementById("view-records"),
+    share: document.getElementById("view-share")
   };
 
   tabButtons.forEach(btn => {
@@ -251,6 +252,14 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   });
+
+  // 列印評鑑迎賓桌卡
+  const btnPrintShareCard = document.getElementById("btnPrintShareCard");
+  if (btnPrintShareCard) {
+    btnPrintShareCard.addEventListener("click", () => {
+      window.print();
+    });
+  }
 
   // 海報預覽 Modal 控制
   const btnShowPoster = document.getElementById("btnShowPoster");
