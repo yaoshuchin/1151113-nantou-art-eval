@@ -1,0 +1,1387 @@
+<!DOCTYPE html>
+<html lang="zh-TW" data-theme="green" data-font="md">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>115南投國中美術班評鑑 - 孕育一棵藝術大樹</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- 頂部常駐導覽列 -->
+  <header class="navbar" id="navbar">
+    <div class="nav-brand">
+      <div class="brand-icon">🎨</div>
+      <div class="brand-info">
+        <h1 class="brand-title">115南投國中美術班評鑑</h1>
+        <span class="brand-subtitle">孕育一棵藝術大樹 ‧ 訪視簡報與應答系統</span>
+      </div>
+    </div>
+
+    <!-- 模式切換按鈕區 (簡報 / B / C / D) -->
+    <nav class="mode-tabs" aria-label="展示模式切換">
+      <button class="tab-btn active" data-mode="slides" title="A模式：完整簡報網頁化展示">
+        <span class="icon">📊</span> 簡報展示
+      </button>
+      <button class="tab-btn" data-mode="qa" title="B模式：評鑑委員提問模擬與應答教戰">
+        <span class="icon">💡</span> B模式：問答教戰
+      </button>
+      <button class="tab-btn" data-mode="agenda" title="C模式：訪視流程、動線與司儀導引">
+        <span class="icon">🗺️</span> C模式：流程動線
+      </button>
+      <button class="tab-btn" data-mode="records" title="D模式：委員建議現場速記與追蹤">
+        <span class="icon">📝</span> D模式：現場紀錄
+      </button>
+    </nav>
+
+    <!-- 頂部控制面板：字體 (大/中/小) 與 布景主題 (淺/深/藍/綠) -->
+    <div class="nav-controls">
+      <!-- 字體選擇 -->
+      <div class="control-group" title="調整字體大小">
+        <span class="control-label">字體：</span>
+        <div class="btn-group font-group">
+          <button class="ctrl-btn font-btn" data-font-size="sm">小</button>
+          <button class="ctrl-btn font-btn active" data-font-size="md">中</button>
+          <button class="ctrl-btn font-btn" data-font-size="lg">大</button>
+        </div>
+      </div>
+
+      <!-- 布景主題選擇 -->
+      <div class="control-group" title="切換布景色彩主題">
+        <span class="control-label">主題：</span>
+        <div class="btn-group theme-group">
+          <button class="ctrl-btn theme-btn" data-theme-val="light" title="淺色雅致">淺</button>
+          <button class="ctrl-btn theme-btn" data-theme-val="dark" title="深色沉浸">深</button>
+          <button class="ctrl-btn theme-btn" data-theme-val="blue" title="文教湛藍">藍</button>
+          <button class="ctrl-btn theme-btn active" data-theme-val="green" title="藝術之樹翠綠">綠</button>
+        </div>
+      </div>
+
+      <!-- 全螢幕切換 -->
+      <button class="ctrl-btn icon-only-btn" id="btnFullscreen" title="切換全螢幕檢視">
+        <span id="fsIcon">⛶</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- 主內容容器 -->
+  <main class="main-container">
+
+    <!-- ========================================== -->
+    <!-- 模式 A：簡報展示模式 (網頁化簡報 16 頁)       -->
+    <!-- ========================================== -->
+    <section id="view-slides" class="view-panel active">
+      <!-- 簡報頂部導覽列：簡報切換控制與跳頁選單 -->
+      <div class="slide-nav-bar">
+        <div class="slide-nav-left">
+          <button class="nav-arrow-btn" id="prevSlideBtn" title="上一頁 (快捷鍵 ← 或 PageUp)">◀ 上一頁</button>
+          <span class="slide-counter">第 <strong id="currentSlideNum">1</strong> / <span id="totalSlideNum">16</span> 頁</span>
+          <button class="nav-arrow-btn" id="nextSlideBtn" title="下一頁 (快捷鍵 → 或 PageDown/Space)">下一頁 ▶</button>
+        </div>
+
+        <div class="slide-nav-center">
+          <select id="slideSelect" class="slide-dropdown" title="快速跳至指定投影片"></select>
+        </div>
+
+        <div class="slide-nav-right">
+          <button class="toggle-notes-btn" id="toggleNotesBtn">
+            <span>🎙️</span> <span id="notesBtnText">顯示校長講稿與重點</span>
+          </button>
+          <button class="mode-view-btn" id="toggleViewModeBtn" title="在「單頁投影」與「全部一覽」間切換">
+            <span>📑</span> <span id="viewModeText">全頁流暢瀏覽</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- 投影片本體容器 -->
+      <div class="slide-deck-container" id="slideDeck">
+        
+        <!-- Slide 1: 封面 -->
+        <article class="slide-card active" data-slide="1">
+          <div class="slide-header-badge">南投縣立南投國民中學 115年度藝術才能班訪視評鑑</div>
+          <div class="slide-hero">
+            <div class="tree-emblem">🌳</div>
+            <h2 class="slide-main-title">南投國中 115 年度<br><span class="highlight-text">藝術才能美術班評鑑</span></h2>
+            <p class="slide-slogan">「孕育一棵藝術大樹」— 扎根南投，繁枝茂葉</p>
+            <div class="presenter-tag">
+              <span class="badge-role">報告人</span>
+              <span class="name">校長 劉松彥</span>
+            </div>
+          </div>
+          <div class="slide-footer-meta">
+            <span>評鑑日期：115學年度訪視評鑑</span>
+            <button class="view-poster-btn" id="btnShowPoster" type="button">🖼️ 檢視電視牆迎賓海報</button>
+            <span>南投國中全體師生 誠摯敬迎</span>
+          </div>
+          <aside class="speaker-notes">
+            <h4>🎙️ 校長報告要點（講稿提示）：</h4>
+            <p>各位評鑑委員、專家學者早安！南投國中美術班自成立以來，始終秉持以學生為本的教育理念。今天我們以「孕育一棵藝術大樹」為主軸，向各位委員報告我們如何從行政土壤、師資陽光、三年課程枝幹、設備經費養分，結出豐碩的藝術果實，並呈現歷年評鑑改善的年輪淬鍊！</p>
+          </aside>
+        </article>
+
+        <!-- Slide 2: 敘事脈絡 -->
+        <article class="slide-card" data-slide="2">
+          <div class="slide-meta-chapter">架構導覽</div>
+          <h2 class="slide-title">敘事脈絡 ｜ 孕育一棵藝術大樹</h2>
+          <div class="tree-framework-grid">
+            <div class="framework-card" data-target="3">
+              <div class="fm-icon">🌱</div>
+              <div class="fm-phase">土壤</div>
+              <h3>一、行政與管理</h3>
+              <p>健全領導體制、跨處室協作、嚴謹鑑定與滿編招生</p>
+            </div>
+            <div class="framework-card" data-target="5">
+              <div class="fm-icon">☀️</div>
+              <div class="fm-phase">陽光與水</div>
+              <h3>二、師資與研究</h3>
+              <p>多元互補職人師資、產學接軌、跨域共備研發動能</p>
+            </div>
+            <div class="framework-card" data-target="7">
+              <div class="fm-icon">🌿</div>
+              <div class="fm-phase">枝幹</div>
+              <h3>三、課程與教學</h3>
+              <p>三年循序漸進美學藍圖、四組分組教學、跨域議題融合</p>
+            </div>
+            <div class="framework-card" data-target="9">
+              <div class="fm-icon">💧</div>
+              <div class="fm-phase">養分</div>
+              <h3>四、經費與設備</h3>
+              <p>精準外部資源引進、全校共享美學聚落、8大創作工坊</p>
+            </div>
+            <div class="framework-card" data-target="12">
+              <div class="fm-icon">🍎</div>
+              <div class="fm-phase">果實</div>
+              <h3>五、成果與特色</h3>
+              <p>升學率破5成、美展前三名霸榜、藝師藝友、藝起來尋美</p>
+            </div>
+            <div class="framework-card" data-target="15">
+              <div class="fm-icon">🪵</div>
+              <div class="fm-phase">年輪的淬鍊</div>
+              <h3>歷年評鑑改善精華</h3>
+              <p>對照112年評鑑期許，檢核115年具體突破與制度進化</p>
+            </div>
+          </div>
+          <aside class="speaker-notes">
+            <h4>🎙️ 校長報告要點（講稿提示）：</h4>
+            <p>我們的簡報分為六大部分，如同植物成長：土壤深厚則行政穩健；陽光充足則名師引路；枝幹挺立則課程紮實；養分充沛則設備齊全；結出豐碩升學與競賽果實；最後以年輪展現學校持續反思進步的堅定承諾。</p>
+          </aside>
+        </article>
+
+        <!-- Slide 3: 行政與管理生態系 -->
+        <article class="slide-card" data-slide="3">
+          <div class="slide-meta-chapter">土壤篇 ｜ 行政與管理</div>
+          <h2 class="slide-title">穩固的根基：行政與管理生態系</h2>
+          
+          <div class="org-layout">
+            <div class="core-leadership-box">
+              <div class="core-header">核心領導團隊</div>
+              <div class="core-body">
+                <div class="leader-item">
+                  <span class="role-badge">召集人</span>
+                  <span class="name">校長（劉松彥）</span>
+                </div>
+                <div class="leader-item">
+                  <span class="role-badge">總幹事</span>
+                  <span class="name">輔導主任（蔡惠玲）</span>
+                </div>
+                <div class="leader-item">
+                  <span class="role-badge">執行幹事</span>
+                  <span class="name">特教組長（胡乃韻）</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="departments-grid">
+              <div class="dept-card">
+                <div class="dept-tag">教務處</div>
+                <h4>課程規劃組</h4>
+                <p>課綱對接、課表排定、學術科平衡協調</p>
+              </div>
+              <div class="dept-card">
+                <div class="dept-tag">學務處</div>
+                <h4>教學活動組</h4>
+                <p>校園美育活動、大型展覽展演安全與秩序</p>
+              </div>
+              <div class="dept-card">
+                <div class="dept-tag">輔導室</div>
+                <h4>輔導進路組</h4>
+                <p>性向探索、升學輔導、生活轉銜與退場輔導</p>
+              </div>
+              <div class="dept-card">
+                <div class="dept-tag">總務處</div>
+                <h4>資源整合組</h4>
+                <p>專案採購、專業教室硬體維護、經費核銷</p>
+              </div>
+            </div>
+
+            <div class="external-support-box">
+              <div class="support-item">
+                <span class="support-tag">課發工作小組</span>
+                <p>橫跨教務、總務、學務主任與各年級美術班導師（黃珮姿、黃瓊慧、黃全帆）及專長教師。</p>
+              </div>
+              <div class="support-item">
+                <span class="support-tag">專家諮詢智庫</span>
+                <p><strong>黃嘉勝 教授</strong>、<strong>陳一凡 教授</strong> 常年指導課程研發與評審把關。</p>
+              </div>
+            </div>
+          </div>
+
+          <aside class="speaker-notes">
+            <h4>🎙️ 校長報告要點（講稿提示）：</h4>
+            <p>本校行政生態系並非輔導室單打獨鬥，而是全校四處室通力合作。尤其課發會納入三位年級導師，讓學科生活管理與術科教學零距離；更聘請大專院校藝術名師黃嘉勝與陳一凡教授擔任諮詢智囊，確保教育方向走在時代先端。</p>
+          </aside>
+        </article>
+
+        <!-- Slide 4: 招生與學生規模 -->
+        <article class="slide-card" data-slide="4">
+          <div class="slide-meta-chapter">土壤篇 ｜ 行政與管理</div>
+          <h2 class="slide-title">嚴謹鑑定與穩健招生</h2>
+          
+          <div class="admissions-dashboard">
+            <div class="year-stats-container">
+              <div class="year-stat-card">
+                <div class="stat-year">113 年度</div>
+                <div class="stat-row"><span class="lbl">報考人數</span><span class="val">48 人</span></div>
+                <div class="stat-row"><span class="lbl">正備取</span><span class="val">26(2) 人</span></div>
+                <div class="stat-row highlight"><span class="lbl">實際報到</span><span class="val">25 人</span></div>
+                <div class="stat-bar-box"><div class="stat-bar" style="width: 96%;"></div></div>
+              </div>
+
+              <div class="year-stat-card">
+                <div class="stat-year">114 年度</div>
+                <div class="stat-row"><span class="lbl">報考人數</span><span class="val">27 人</span></div>
+                <div class="stat-row"><span class="lbl">正備取</span><span class="val">24(0) 人</span></div>
+                <div class="stat-row highlight"><span class="lbl">實際報到</span><span class="val">21 人</span></div>
+                <div class="stat-bar-box"><div class="stat-bar" style="width: 88%;"></div></div>
+              </div>
+
+              <div class="year-stat-card active-year">
+                <div class="stat-year">115 年度</div>
+                <div class="stat-row"><span class="lbl">報考人數</span><span class="val">37 人</span></div>
+                <div class="stat-row"><span class="lbl">正備取</span><span class="val">26(4) 人</span></div>
+                <div class="stat-row highlight"><span class="lbl">實際報到</span><span class="val">25 人</span></div>
+                <div class="stat-bar-box"><div class="stat-bar" style="width: 96%;"></div></div>
+              </div>
+            </div>
+
+            <div class="student-total-banner">
+              <div class="total-number-group">
+                <span class="total-lbl">美術班目前總學生數</span>
+                <span class="huge-number">69 <small>人</small></span>
+              </div>
+              <div class="status-desc">
+                <span class="badge-status">狀態：滿編穩定</span>
+                <p>每年級一班，落實適性篩選與鑑輔會標準。班級經營凝聚力強，僅極微幅個別異動。</p>
+              </div>
+            </div>
+          </div>
+
+          <aside class="speaker-notes">
+            <h4>🎙️ 校長報告要點（講稿提示）：</h4>
+            <p>面對少子化浪潮，南投國中美術班依然深受南投地區家長與學子信賴。115年度報考人數逆勢回升達37人，正備取報到率極高，全校三班總學生數維持在69人的高標滿編狀態，足見辦學口碑與專業肯定！</p>
+          </aside>
+        </article>
+
+        <!-- Slide 5: 師資陣容 -->
+        <article class="slide-card" data-slide="5">
+          <div class="slide-meta-chapter">陽光與水篇 ｜ 師資與研究</div>
+          <h2 class="slide-title">多元且互補的職人師資陣容</h2>
+          
+          <div class="teachers-dual-grid">
+            <!-- 正式專業教師 -->
+            <div class="teacher-block">
+              <div class="tb-header official">
+                <h3>正式專業教師</h3>
+                <span class="tb-subtitle">穩固學術與創作根基</span>
+              </div>
+              <div class="teacher-list">
+                <div class="t-card">
+                  <div class="t-avatar">🎓</div>
+                  <div class="t-info">
+                    <h4>胡乃韻 老師</h4>
+                    <span class="t-school">國立高雄師範大學 美術學系</span>
+                    <span class="t-specialty">專長：藝術創作、水墨書畫、美感鑑賞</span>
+                  </div>
+                </div>
+                <div class="t-card">
+                  <div class="t-avatar">🎓</div>
+                  <div class="t-info">
+                    <h4>林曉峰 老師</h4>
+                    <span class="t-school">中國文化大學 美術學系</span>
+                    <span class="t-specialty">專長：藝術創作、水墨書畫、傳統技法</span>
+                  </div>
+                </div>
+                <div class="t-card">
+                  <div class="t-avatar">🎓</div>
+                  <div class="t-info">
+                    <h4>葉素娟 / 林宜玟 老師</h4>
+                    <span class="t-school">彰化師範大學 / 台北藝術大學</span>
+                    <span class="t-specialty">專長：描繪藝術、西畫創作、當代設計</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 外聘專業教師 -->
+            <div class="teacher-block">
+              <div class="tb-header adjunct">
+                <h3>外聘專業教師</h3>
+                <span class="tb-subtitle">引入當代媒材與設計實務</span>
+              </div>
+              <div class="teacher-list">
+                <div class="t-card">
+                  <div class="t-avatar">🖌️</div>
+                  <div class="t-info">
+                    <h4>李佳芸 老師</h4>
+                    <span class="t-specialty">水墨、西畫、數位電繪插畫</span>
+                  </div>
+                </div>
+                <div class="t-card">
+                  <div class="t-avatar">✏️</div>
+                  <div class="t-info">
+                    <h4>鄒修宏 老師</h4>
+                    <span class="t-specialty">精準素描、水彩技法、寫生訓練</span>
+                  </div>
+                </div>
+                <div class="t-card">
+                  <div class="t-avatar">💻</div>
+                  <div class="t-info">
+                    <h4>李健榮 老師</h4>
+                    <span class="t-specialty">電腦雷雕應用、文創產品立體設計</span>
+                  </div>
+                </div>
+                <div class="t-card">
+                  <div class="t-avatar">🏺</div>
+                  <div class="t-info">
+                    <h4>沈明宏 老師</h4>
+                    <span class="t-specialty">立體雕塑、陶藝工藝、立體造型</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="insight-banner">
+            <span class="insight-badge">核心洞察 Insight</span>
+            <span>兼具深厚學術底蘊與前衛當代設計，正式師資把關扎實基本功，業界專家引領新興媒材，打造夢幻互補團隊。</span>
+          </div>
+
+          <aside class="speaker-notes">
+            <h4>🎙️ 校長報告要點（講稿提示）：</h4>
+            <p>112年評鑑委員曾期許我們充實多元師資。我們在115年落實了「正式師資扎根、外聘專家開眼界」的雙軌架構。正式教師全數為高師、文化、彰師、北藝等頂尖名校科班出身；外聘老師則引進電繪、雷雕、產品設計與陶藝，讓孩子學到的不只有紙上繪畫，更有走入產業的實戰力。</p>
+          </aside>
+        </article>
+
+        <!-- Slide 6: 教學研發動能 -->
+        <article class="slide-card" data-slide="6">
+          <div class="slide-meta-chapter">陽光與水篇 ｜ 師資與研究</div>
+          <h2 class="slide-title">持續精進的教學研發動能</h2>
+          
+          <div class="pd-grid">
+            <div class="pd-card">
+              <div class="pd-icon">📚</div>
+              <h3>校內外增能研習</h3>
+              <p>每學期至少安排 <strong>2 次校內專業研習</strong>，並大力鼓勵教師參與校外新知進修。</p>
+              <div class="pd-tag">實例：Canva 數位美編工具與 AI 創作輔助教學融入</div>
+            </div>
+
+            <div class="pd-card">
+              <div class="pd-icon">🤝</div>
+              <h3>課發小組定期共備</h3>
+              <p>定期召開「課程發展工作小組會議」，校內教師與外聘名師共同議課，精準對接教學目標與學生學力反饋。</p>
+              <div class="pd-tag">焦點：橫向打破學科壁壘，縱向貫穿三年教學藍圖</div>
+            </div>
+
+            <div class="pd-card">
+              <div class="pd-icon">💬</div>
+              <h3>專業對話成果轉化</h3>
+              <p>透過課堂觀課、同儕回饋與作品集評估，使教師間的專業對話化為活化日常課堂的實質養分。</p>
+              <div class="pd-tag">成果：校本特色教材編撰、跨域教案推廣</div>
+            </div>
+          </div>
+
+          <aside class="speaker-notes">
+            <h4>🎙️ 校長報告要點（講稿提示）：</h4>
+            <p>老師是教學的活水。我們不僅注重傳統技藝傳承，更與時俱進推動數位增能研習。透過定期的課發工作小組會議，導師與術科老師共同分析孩子在創作上的盲點與突破，讓備課不再是個人作業，而是團隊的共好實踐。</p>
+          </aside>
+        </article>
+
+        <!-- Slide 7: 三年美學藍圖 -->
+        <article class="slide-card" data-slide="7">
+          <div class="slide-meta-chapter">枝幹篇 ｜ 課程與教學</div>
+          <h2 class="slide-title">循序漸進的三年美學藍圖</h2>
+          <div class="curriculum-meta-bar">
+            <span>課程總節數：每週 <strong>35 節</strong></span>
+            <span>部定領域課程：<strong>27 節</strong></span>
+            <span>專業藝術才能彈性課程：<strong>8 節</strong>（每週深入實作）</span>
+          </div>
+
+          <div class="curriculum-pyramid">
+            <!-- 九年級 -->
+            <div class="pyramid-level l9">
+              <div class="lvl-label">
+                <span class="grade">九年級</span>
+                <span class="phase">整合期（7節專業）</span>
+              </div>
+              <div class="lvl-content">
+                <div class="subject-chips">
+                  <span class="chip">描繪藝術 (2)</span>
+                  <span class="chip">彩繪創意 (2)</span>
+                  <span class="chip">書畫藝術 (2)</span>
+                  <span class="chip">複合媒材 (1)</span>
+                </div>
+                <p class="lvl-goal">深層觀念提煉、畢業大展創作、升學術科模擬與個人作品集整合</p>
+              </div>
+            </div>
+
+            <!-- 八年級 -->
+            <div class="pyramid-level l8">
+              <div class="lvl-label">
+                <span class="grade">八年級</span>
+                <span class="phase">奠基期（7節專業）</span>
+              </div>
+              <div class="lvl-content">
+                <div class="subject-chips">
+                  <span class="chip">描繪藝術 (2)</span>
+                  <span class="chip">彩繪創意 (2)</span>
+                  <span class="chip">書畫藝術 (2)</span>
+                  <span class="chip">複合媒材 (1)</span>
+                </div>
+                <p class="lvl-goal">精熟技法淬鍊、媒材混搭實驗、大型競賽送件與立體工藝深化</p>
+              </div>
+            </div>
+
+            <!-- 七年級 -->
+            <div class="pyramid-level l7">
+              <div class="lvl-label">
+                <span class="grade">七年級</span>
+                <span class="phase">探索期（7節專業）</span>
+              </div>
+              <div class="lvl-content">
+                <div class="subject-chips">
+                  <span class="chip special">藝術創作初探 (2)</span>
+                  <span class="chip">描繪藝術 (2)</span>
+                  <span class="chip">彩繪創意 (2)</span>
+                  <span class="chip">複合媒材 (1)</span>
+                </div>
+                <p class="lvl-goal">建立基礎觀察力、造形構成、色彩敏感度、美學素養奠基</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="pyramid-feature">
+            <span class="star-badge">★ 亮點特色</span>
+            <span><strong>落實「四組分組教學」</strong>：打破大班授課限制，依媒材進行精緻分組教學，每位孩子均能獲得教師手把手的高密度實作指導！</span>
+          </div>
+
+          <aside class="speaker-notes">
+            <h4>🎙️ 校長報告要點（講稿提示）：</h4>
+            <p>在課程規劃上，我們堅持「循序漸進」。七年級先從「藝術創作初探」打開孩子的視野；八年級導入書畫與複合媒材打底；九年級則進入統整創作與畢業展策劃。最關鍵的是我們實施「四組分組教學」，大幅縮小師生比，讓實作細節無所遺漏。</p>
+          </aside>
+        </article>
+
+        <!-- Slide 8: 跨域融合與多元教學 -->
+        <article class="slide-card" data-slide="8">
+          <div class="slide-meta-chapter">枝幹篇 ｜ 課程與教學</div>
+          <h2 class="slide-title">跨域融合與多元教學實踐</h2>
+          
+          <div class="practices-grid">
+            <div class="practice-card">
+              <div class="p-header">
+                <span class="p-icon">🌱</span>
+                <h3>融入當代重要議題</h3>
+              </div>
+              <p>結合學校大型活動與社會關懷，將<strong>環境永續教育</strong>、<strong>本土與多元文化</strong>融入常態規劃課程，讓藝術創作有靈魂、有深度。</p>
+            </div>
+
+            <div class="practice-card">
+              <div class="p-header">
+                <span class="p-icon">🏛️</span>
+                <h3>藝術史與名作鑑賞</h3>
+              </div>
+              <p>不只是機械式技法實作！教師於課程中深度融入<strong>東西方藝術史觀與經典剖析</strong>，培養學生批判思考與美學解讀能力。</p>
+            </div>
+
+            <div class="practice-card">
+              <div class="p-header">
+                <span class="p-icon">💖</span>
+                <h3>轉銜與雙軌身心輔導</h3>
+              </div>
+              <p><strong>導師與美術專任老師雙管齊下</strong>，透過每日聯絡簿與課堂一對一關懷，及時掌握適應狀況，建立堅強的心靈後盾與退場輔導。</p>
+            </div>
+
+            <div class="practice-card">
+              <div class="p-header">
+                <span class="p-icon">🖌️</span>
+                <h3>寒暑假拔尖進階特訓</h3>
+              </div>
+              <p>善用長假安排密集<strong>書法與水墨特訓</strong>，深植漢字線條美感，並與未來高中美術班升學術科試務提早無縫銜接。</p>
+            </div>
+          </div>
+
+          <aside class="speaker-notes">
+            <h4>🎙️ 校長報告要點（講稿提示）：</h4>
+            <p>我們的美術班絕不是封閉的象牙塔。我們把藝術史、社會環境議題與品格輔導緊密編織在一起。孩子在每日聯絡簿中不僅分享課業，也抒發創作心境；寒暑假更安排系統性書法特訓，全方位鍛鍊基本功。</p>
+          </aside>
+        </article>
+
+        <!-- Slide 9: 經費與設備精準投資 -->
+        <article class="slide-card" data-slide="9">
+          <div class="slide-meta-chapter">養分篇 ｜ 經費與設備</div>
+          <h2 class="slide-title">精準投資，澆灌美感場域</h2>
+          
+          <div class="funding-dashboard">
+            <div class="funding-total-box">
+              <div class="funding-badge">113-114 學年度總投入外部與專案經費</div>
+              <div class="funding-amount">NT$ 661,456</div>
+              <p class="funding-insight">「積極向中央與縣府爭取多元計畫挹注，最大化每位學生的學習體驗與硬體現代化。」</p>
+            </div>
+
+            <div class="funding-breakdown-list">
+              <div class="breakdown-item">
+                <div class="bd-color-tag c1"></div>
+                <div class="bd-info">
+                  <div class="bd-title-row">
+                    <span class="bd-name">專家引進計畫（藝師藝友 / 工藝入校）</span>
+                    <span class="bd-val">NT$ 224,400</span>
+                  </div>
+                  <div class="bd-progress"><div class="bd-bar" style="width: 34%;"></div></div>
+                  <span class="bd-desc">聘請在地大師入校協同教學、媒材工藝材料費</span>
+                </div>
+              </div>
+
+              <div class="breakdown-item">
+                <div class="bd-color-tag c2"></div>
+                <div class="bd-info">
+                  <div class="bd-title-row">
+                    <span class="bd-name">美感體驗計畫（藝起來尋美）</span>
+                    <span class="bd-val">NT$ 120,000</span>
+                  </div>
+                  <div class="bd-progress"><div class="bd-bar" style="width: 18%;"></div></div>
+                  <span class="bd-desc">走出校園參訪、多元食藝與生活美學跨域實踐</span>
+                </div>
+              </div>
+
+              <div class="breakdown-item">
+                <div class="bd-color-tag c3"></div>
+                <div class="bd-info">
+                  <div class="bd-title-row">
+                    <span class="bd-name">畢業美展策展與畫冊印製</span>
+                    <span class="bd-val">NT$ 50,000</span>
+                  </div>
+                  <div class="bd-progress"><div class="bd-bar" style="width: 8%;"></div></div>
+                  <span class="bd-desc">大型展覽場地布置、專屬畫冊印刷、開幕茶會</span>
+                </div>
+              </div>
+
+              <div class="breakdown-item">
+                <div class="bd-color-tag c4"></div>
+                <div class="bd-info">
+                  <div class="bd-title-row">
+                    <span class="bd-name">重大專業教學設備升級（縣府專案補助）</span>
+                    <span class="bd-val">縣府專款全額補助</span>
+                  </div>
+                  <div class="bd-progress"><div class="bd-bar" style="width: 40%;"></div></div>
+                  <span class="bd-desc">側開式高溫電窯、專業雷射雕刻管換新、教室冷氣導風罩全面改善</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <aside class="speaker-notes">
+            <h4>🎙️ 校長報告要點（講稿提示）：</h4>
+            <p>工欲善其事，必先利其器。本校近兩年合計爭取超過66萬元專案經費，專款專用於孩子身上。包含引進工藝大師的22.4萬元、美感體驗的12萬元；並獲縣府補助換裝最新的側開式專業電窯與雷雕管，讓學生的創作不再受限於器材。</p>
+          </aside>
+        </article>
+
+        <!-- Slide 10: 境教之美：全校共享美學聚落 -->
+        <article class="slide-card" data-slide="10">
+          <div class="slide-meta-chapter">養分篇 ｜ 經費與設備</div>
+          <h2 class="slide-title">境教之美：全校共享的美學聚落</h2>
+          
+          <div class="env-showcase">
+            <div class="env-text-box">
+              <div class="highlight-callout">
+                <h3>美感空間 ‧ 輻射全校</h3>
+                <p>將藝術班能量轉化為全校性美感養分，讓每一位南投國中學子在走廊與閱讀空間中浸潤於藝術之美。</p>
+              </div>
+              <div class="env-features">
+                <div class="ef-item">
+                  <span class="ef-icon">📖</span>
+                  <div>
+                    <h4>溫馨圖書館藝廊</h4>
+                    <p>兼具閱讀、靜態展覽與心靈沉澱的幸福空間，定期更換美術班師生精選得獎畫作。</p>
+                  </div>
+                </div>
+                <div class="ef-item">
+                  <span class="ef-icon">🛡️</span>
+                  <div>
+                    <h4>高標自評與合規維護</h4>
+                    <p>全區空間配置符合評鑑最高安全指標，採光、通風良好，設備落實專人定期巡檢維護，使用率極佳。</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="env-gallery-placeholder">
+              <div class="gallery-card">
+                <div class="gc-icon">🏛️</div>
+                <div class="gc-info">
+                  <h4>圖書館展演空間</h4>
+                  <p>挑高天井、自然光溢流、美感吊燈與實木閱讀桌椅</p>
+                </div>
+              </div>
+              <div class="gallery-card">
+                <div class="gc-icon">🖼️</div>
+                <div class="gc-info">
+                  <h4>藝廊壁面專業軌道吊掛區</h4>
+                  <p>柔和軌道燈光襯托學生精緻畫作，全校師生近距離欣賞</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <aside class="speaker-notes">
+            <h4>🎙️ 校長報告要點（講稿提示）：</h4>
+            <p>我們深信「境教」的力量。我們的圖書館不僅是藏書閣，更是全校的美學心臟。我們讓美術班學生的創作走出專用教室，展示在圖書館與校園各角落，營造溫馨寧靜的藝術氛圍，讓全校三千多名師生共同分享美感果實。</p>
+          </aside>
+        </article>
+
+        <!-- Slide 11: 八大創作基地 -->
+        <article class="slide-card" data-slide="11">
+          <div class="slide-meta-chapter">養分篇 ｜ 經費與設備</div>
+          <h2 class="slide-title">專業齊備的八大創作基地</h2>
+          <p class="subtitle-text">高達 8 間專門課程教室，設備健全齊全，落實「佈展即教學」</p>
+
+          <div class="bases-grid">
+            <div class="base-card">
+              <div class="bc-num">01</div>
+              <h4>水墨國畫教室</h4>
+              <p>傳統大畫板、特製毛筆洗水槽、典雅書法對聯桌</p>
+            </div>
+            <div class="base-card">
+              <div class="bc-num">02</div>
+              <h4>專業素描教室</h4>
+              <p>充足專業畫架、石膏靜物台、精準定向控光投影設備</p>
+            </div>
+            <div class="base-card">
+              <div class="bc-num">03</div>
+              <h4>彩繪水彩工坊</h4>
+              <p>寬敞實作調色桌、流暢清洗排水系統、作品晾曬架</p>
+            </div>
+            <div class="base-card">
+              <div class="bc-num">04</div>
+              <h4>立體陶藝工坊</h4>
+              <p>側開式電腦控溫電窯、電動拉胚機、專用土泥配料區</p>
+            </div>
+            <div class="base-card">
+              <div class="bc-num">05</div>
+              <h4>版畫壓印工坊</h4>
+              <p>重型傳統手搖版畫壓印機、油墨專用防護排風通風台</p>
+            </div>
+            <div class="base-card">
+              <div class="bc-num">06</div>
+              <h4>木工雕刻教室</h4>
+              <p>木工專業夾桌、齊全傳統雕刻刀組、安全護目與集塵設備</p>
+            </div>
+            <div class="base-card">
+              <div class="bc-num">07</div>
+              <h4>雷雕多媒體電腦教室</h4>
+              <p>最新電腦輔助設計、數位繪圖板、精密雷射雕刻切割機</p>
+            </div>
+            <div class="base-card special">
+              <div class="bc-num">08</div>
+              <h4>專業藝術展覽廳</h4>
+              <p>專業可調溫軌道投射燈、無縫活動展示板、落實「佈展即教學」</p>
+            </div>
+          </div>
+
+          <aside class="speaker-notes">
+            <h4>🎙️ 校長報告要點（講稿提示）：</h4>
+            <p>南投國中擁有傲視全縣的「八大專業創作基地」！從水墨、素描、水彩，到陶藝窯爐、版畫機、木工雕刻以及最新的雷射雕刻電腦教室，一應俱全。我們的孩子在國中三年就能完整體驗八種不同媒材的頂尖設備，培養全方位的造形能力！</p>
+          </aside>
+        </article>
+
+        <!-- Slide 12: 豐碩果實：得獎與升學 -->
+        <article class="slide-card" data-slide="12">
+          <div class="slide-meta-chapter">果實篇 ｜ 成果與特色</div>
+          <h2 class="slide-title">豐碩果實：從得獎到升學的全方位成就</h2>
+          
+          <div class="achieve-grid">
+            <div class="achieve-big-card c-red">
+              <div class="huge-stat">> 50%</div>
+              <h3>專業升學錄取率超越五成</h3>
+              <p>過半數畢業生以優異成績考取各明星公立高中美術班（如台中一中、彰化高中美術班）及高職美工、室內設計、多媒體動畫與圖文傳播科系，升學進路卓越！</p>
+            </div>
+
+            <div class="achieve-big-card c-orange">
+              <div class="huge-stat">Top 3</div>
+              <h3>學生美展幾近囊括前三名</h3>
+              <p>在全國與全縣學生美術比賽中表現驚豔，水墨、水彩、版畫、平面設計、漫畫及書法等<strong>六大競賽類別包辦前三名及優選</strong>，傲視全場！</p>
+            </div>
+          </div>
+
+          <div class="exhibition-banner">
+            <div class="eb-icon">🎉</div>
+            <div class="eb-text">
+              <h4>每年盛大舉辦「畢業美展暨開幕茶會」</h4>
+              <p>不只是靜態展出！學生親自主持策展、佈展、文宣設計，並結合器樂演奏、跨域才藝表演，讓每位孩子自信登台發光發熱，廣獲地方各界盛讚。</p>
+            </div>
+          </div>
+
+          <aside class="speaker-notes">
+            <h4>🎙️ 校長報告要點（講稿提示）：</h4>
+            <p>這棵藝術大樹結出的果實無比甜美！我們連續多年有超過一半的畢業生順利進入頂尖高中美術班與設計名校；在學生美展中六大類別前三名幾乎被我們南投國中包辦；每年的畢業美展更是一場結合跨域才藝表演的藝術嘉年華！</p>
+          </aside>
+        </article>
+
+        <!-- Slide 13: 特色延伸：藝師藝友計畫 -->
+        <article class="slide-card" data-slide="13">
+          <div class="slide-meta-chapter">果實篇 ｜ 成果與特色</div>
+          <h2 class="slide-title">特色延伸 ｜ 113 藝師藝友工藝入校計畫</h2>
+          <p class="subtitle-text">延聘在地文化工作者與傳統工藝大師入校，打破課堂疆界</p>
+
+          <div class="project-features-grid">
+            <div class="pf-card">
+              <div class="pf-num">01</div>
+              <h4>大師親炙 ‧ 匠心傳承</h4>
+              <p>邀請資深傳統雕刻大師到校示範，學生近距離觀察鑿刀角度與木質紋理，體悟專注職人精神。</p>
+            </div>
+            <div class="pf-card">
+              <div class="pf-num">02</div>
+              <h4>多元體驗 ‧ 媒材拓展</h4>
+              <p>引導學生親自操作木工刨削、手雕研磨，並結合電腦精密雷雕技術，從平面構圖躍升至立體造型與生活產品設計。</p>
+            </div>
+            <div class="pf-card">
+              <div class="pf-num">03</div>
+              <h4>產學融合 ‧ 地方連結</h4>
+              <p>結合南投在地工藝文化底蘊，將傳統圖騰與現代文創結合，產出富有溫度與設計感的木質手工藝成品。</p>
+            </div>
+          </div>
+
+          <div class="project-photo-note">
+            <span>📸 教學實況紀錄：</span>
+            木工教室專注雕鑿 ｜ 藝師手把手示範 ｜ 雷雕數位圖檔轉化 ｜ 學生自信展示手工藝文創成品
+          </div>
+
+          <aside class="speaker-notes">
+            <h4>🎙️ 校長報告要點（講稿提示）：</h4>
+            <p>透過113年度的「藝師藝友計畫」，我們把南投在地著名的工藝大師請進教室。孩子們親手拿起雕刻刀體驗木料的溫潤，並融合現代電腦雷射雕刻，從平面的畫紙延伸到三維立體工藝，真正拓展了藝術學習的無限邊界。</p>
+          </aside>
+        </article>
+
+        <!-- Slide 14: 跨域創新：藝起來尋美計畫 -->
+        <article class="slide-card" data-slide="14">
+          <div class="slide-meta-chapter">果實篇 ｜ 成果與特色</div>
+          <h2 class="slide-title">跨域創新 ｜ 113-114 藝起來尋美計畫</h2>
+          <p class="subtitle-text">打破傳統美術嚴肅框架，結合生活美感、多媒體與生活美學實踐</p>
+
+          <div class="food-art-grid">
+            <div class="fa-card">
+              <div class="fa-icon">🧁</div>
+              <h3>食藝跨域 ‧ 甜點翻糖立體雕塑</h3>
+              <p>引導學生運用色彩學、三維造型技巧，將食用奶油與翻糖轉化為創意杯子蛋糕與微型雕塑，探索舌尖上的美學。</p>
+            </div>
+            <div class="fa-card">
+              <div class="fa-icon">💻</div>
+              <h3>數位多媒體 ‧ 視覺商業排版</h3>
+              <p>學生自行操作繪圖軟體設計品牌包裝、視覺宣傳卡片，將作品拍攝後編排成精美成果冊，接軌當代商業美學。</p>
+            </div>
+            <div class="fa-card">
+              <div class="fa-icon">🌈</div>
+              <h3>生活美感 ‧ 走出畫布</h3>
+              <p>讓美感體驗走出冰冷畫布，與日常飲食、校園生活環境緊密結合，徹底激發孩子無限的想像力與跨領域自信！</p>
+            </div>
+          </div>
+
+          <aside class="speaker-notes">
+            <h4>🎙️ 校長報告要點（講稿提示）：</h4>
+            <p>「藝起來尋美」計畫是我們打破傳統框架的代表作！孩子們把調色盤換成翻糖與奶油霜，在杯子蛋糕上雕塑出生動立體的卡通與花鳥造型；並透過電腦排版印製精美的專案成果冊，讓美感真正走入日常生活的每一刻！</p>
+          </aside>
+        </article>
+
+        <!-- Slide 15: 年輪的淬鍊：112年評鑑回應 -->
+        <article class="slide-card" data-slide="15">
+          <div class="slide-meta-chapter">年輪的淬鍊 ｜ 歷年改進精華</div>
+          <h2 class="slide-title">年輪的淬鍊：112年評鑑建議之蛻變回應</h2>
+          <p class="subtitle-text">誠懇傾聽、精準落實，五大維度全方位突破！</p>
+
+          <div class="comparison-table-wrapper">
+            <table class="comparison-table">
+              <thead>
+                <tr>
+                  <th style="width: 15%;">維度面向</th>
+                  <th style="width: 38%;">112 年評鑑期許與建議</th>
+                  <th style="width: 47%;" class="highlight-th">115 年具體突破與落實成效</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><span class="dim-tag">行政管理</span></td>
+                  <td>課程規劃稍趨保守，宜多元拓展新興領域</td>
+                  <td><strong>全面活化課程架構</strong>，積極引入電腦雷雕、數位電繪、食藝與木工現代新興媒材。</td>
+                </tr>
+                <tr>
+                  <td><span class="dim-tag">師資研究</span></td>
+                  <td>需擴充多元專業師資，強化導師兼任與跨處室對話</td>
+                  <td><strong>成功引進 5 位外聘頂尖產學專家</strong>；導師深度全程參與課發小組定期會議，行政教學合一。</td>
+                </tr>
+                <tr>
+                  <td><span class="dim-tag">課程教學</span></td>
+                  <td>健全不適應學生轉銜機制、深化個別輔導</td>
+                  <td><strong>確立完善之轉銜輔導退場機制</strong>，落實「四組分組教學」，個別化指導更細膩周全。</td>
+                </tr>
+                <tr>
+                  <td><span class="dim-tag">經費設備</span></td>
+                  <td>建議增加校內外學生比賽獎勵與展演獎金</td>
+                  <td><strong>爭取外部資源與專案自辦競賽</strong>，美術類校內獎勵金與得獎獎學金已具體顯著提高！</td>
+                </tr>
+                <tr>
+                  <td><span class="dim-tag">成果特色</span></td>
+                  <td>大型年度展覽期間，宜賦予各年級具體分層任務</td>
+                  <td><strong>畢業美展與跨域才藝表演合一</strong>，九年級策展、八年級導覽服務、七年級迎賓傳承，分工井然。</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <aside class="speaker-notes">
+            <h4>🎙️ 校長報告要點（講稿提示）：</h4>
+            <p>這張對照表是我們團隊三年來最驕傲的成績單！112年委員提出的五大期許，我們沒有一項遺漏：課程更前衛活潑、5位專家全面到位、退場機制完全建立、獎金具體提高、畢業展實施七至九年級垂直整合分工，展現南投國中強大的自省與執行力！</p>
+          </aside>
+        </article>
+
+        <!-- Slide 16: 結語 -->
+        <article class="slide-card" data-slide="16">
+          <div class="slide-hero conclusion-hero">
+            <div class="tree-emblem big">🌲</div>
+            <h2 class="slide-main-title">扎根南投 ‧ 繁枝茂葉</h2>
+            <p class="conclusion-text">
+              「以精準的行政支援為土壤，以專業的師資陪伴為陽光，<br>
+              在南投國中這片沃土上，孕育每一株充滿潛力的藝術幼苗！」
+            </p>
+            <div class="gratitude-box">
+              <p>感謝各位評鑑委員、專家學者蒞臨指導</p>
+              <small>詳細數據佐證、學生作品冊與課程教案，敬請參閱桌上紙本報告書</small>
+            </div>
+            <div class="contact-footer">
+              南投縣立南投國民中學 藝術才能美術班 全體師生 誠摯敬禮
+            </div>
+          </div>
+          <aside class="speaker-notes">
+            <h4>🎙️ 校長報告要點（講稿提示）：</h4>
+            <p>感謝各位委員的聆聽。南投國中美術班全體師生與行政團隊已經準備妥當，懇請各位委員在接下來的實地踏查與資料審閱中，多給予我們指導與鼓勵，讓我們這棵藝術大樹能繼續為南投的孩子遮蔭展臂、開花結果！謝謝大家！</p>
+          </aside>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- 模式 B：評鑑委員提問模擬與應答教戰 (Q&A)       -->
+    <!-- ========================================== -->
+    <section id="view-qa" class="view-panel">
+      <div class="section-hero">
+        <div class="section-title-wrap">
+          <span class="section-tag">Mode B ｜ Defense & QA</span>
+          <h2>💡 評鑑委員高頻提問模擬與應答教戰守則</h2>
+          <p>彙整評鑑歷年焦點，依行政、師資、課程退場、經費設備、跨域成果精準佈防，協助團隊掌握答辯主軸與具體數據佐證。</p>
+        </div>
+        <div class="qa-filter-bar">
+          <button class="qa-pill active" data-filter="all">全部問題 (8)</button>
+          <button class="qa-pill" data-filter="admin">行政與招生</button>
+          <button class="qa-pill" data-filter="faculty">師資與專業</button>
+          <button class="qa-pill" data-filter="curriculum">課程與退場</button>
+          <button class="qa-pill" data-filter="budget">經費與設備</button>
+          <button class="qa-pill" data-filter="future">特色與永續</button>
+        </div>
+      </div>
+
+      <div class="qa-accordion-list">
+        <!-- QA 1 -->
+        <div class="qa-card" data-category="curriculum">
+          <div class="qa-header">
+            <span class="q-badge">Q1 課程退場</span>
+            <h3 class="q-title">若學生入學後因適應不良、學科壓力或性向轉變，學校如何落實退場轉銜機制？</h3>
+            <span class="chevron">▼</span>
+          </div>
+          <div class="qa-body">
+            <div class="ans-block">
+              <span class="ans-label">🎯 應答核心主軸：</span>
+              <p>「落實預警、導師雙軌輔導、特推會法定審議、普通班無縫接軌。」</p>
+            </div>
+            <div class="ans-detail">
+              <h4>具體作法與佐證數據：</h4>
+              <ul>
+                <li><strong>平時預警機制：</strong>導師每日審閱聯絡簿生活札記，術科專長教師在每週四組分組實作中直接掌握學習挫折，輔導室每學期固定實施心理性向評量與適應問卷。</li>
+                <li><strong>三級輔導介入：</strong>初遇困難由導師及美術老師進行初級關懷；若持續適應困難，轉介輔導專任心理輔導教師晤談，並主動邀請家長到校召開親師溝通會議。</li>
+                <li><strong>召開特推會審議：</strong>若學生確實有意回歸普通班，依「高級中等以下學校藝術才能班設立標準」提報學校特推會審查，尊重學生意願與法定程序，協助編入本校常態普通班，並追蹤轉銜後心理適應狀況。目前全校69人滿編穩定，異動率極低。</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- QA 2 -->
+        <div class="qa-card" data-category="curriculum">
+          <div class="qa-header">
+            <span class="q-badge">Q2 學術科平衡</span>
+            <h3 class="q-title">每週 35 節課程（部定 27 節 + 專長 8 節），如何確保學生術科精進同時兼顧學業基礎？</h3>
+            <span class="chevron">▼</span>
+          </div>
+          <div class="qa-body">
+            <div class="ans-block">
+              <span class="ans-label">🎯 應答核心主軸：</span>
+              <p>「課堂高效率吸收、四組分組實作降低課後負擔、導師課業關懷兼顧。」</p>
+            </div>
+            <div class="ans-detail">
+              <h4>具體作法與佐證數據：</h4>
+              <ul>
+                <li><strong>四組分組小班教學：</strong>專長彈性節數實施小組化教學，老師在課堂內直接手把手修正，大部分創作在校內專門教室完成，避免孩子回家背負過多繁重作畫負擔。</li>
+                <li><strong>部定課程不打折：</strong>國、英、數、自、社等 27 節部定課程完全依法如質如量開課，絕無挪用學科節數之情事。</li>
+                <li><strong>考前彈性調配與寒暑期增能：</strong>大考前由導師協調自習與解惑；寒暑假則規劃書法與基本功進階訓練，讓學期中的學習步調更加平穩。</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- QA 3 -->
+        <div class="qa-card" data-category="faculty">
+          <div class="qa-header">
+            <span class="q-badge">Q3 外聘師資治理</span>
+            <h3 class="q-title">外聘專業教師高達 4~5 位，學校如何落實教學督導與課綱目標接軌？</h3>
+            <span class="chevron">▼</span>
+          </div>
+          <div class="qa-body">
+            <div class="ans-block">
+              <span class="ans-label">🎯 應答核心主軸：</span>
+              <p>「雙師共備制度、正式教師主導課發會、互補互利發揮綜效。」</p>
+            </div>
+            <div class="ans-detail">
+              <h4>具體作法與佐證數據：</h4>
+              <ul>
+                <li><strong>納入課發小組定期共備：</strong>外聘老師（李佳芸、鄒修宏、李健榮、沈明宏）均需出席期初及期末課程研討，提交學期教學計畫與單元目標。</li>
+                <li><strong>課堂正式教師協同：</strong>外聘專業教師主攻當代媒材（電繪、雷雕、產品、陶藝），校內正式編制教師（胡乃韻、林曉峰、葉素娟、林宜玟）隨時掌握班級秩序與安全規範，達到「學術底蘊＋當代實務」的最佳互補。</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- QA 4 -->
+        <div class="qa-card" data-category="budget">
+          <div class="qa-header">
+            <span class="q-badge">Q4 經費永續性</span>
+            <h3 class="q-title">113-114 學年度投入 66 萬餘元主要來自競爭性計畫補助，若專案結束如何維持營運？</h3>
+            <span class="chevron">▼</span>
+          </div>
+          <div class="qa-body">
+            <div class="ans-block">
+              <span class="ans-label">🎯 應答核心主軸：</span>
+              <p>「資本門設備已全數到位、常態耗材納入本預算、家長會與地方仕紳鼎力後盾。」</p>
+            </div>
+            <div class="ans-detail">
+              <h4>具體作法與佐證數據：</h4>
+              <ul>
+                <li><strong>重型資本設備已建置完成：</strong>縣府補助之高溫側開電窯、雷射雕刻機、八大教室冷氣導風等重型硬體耐用年限長達 8~10 年，未來僅需少量常規維護費。</li>
+                <li><strong>爭取計畫獲評極高：</strong>「藝師藝友」、「藝起來尋美」歷年成果均獲中央與縣府特優肯定，獲獎信譽保證後續計畫核定穩定。</li>
+                <li><strong>校內公務預算保底：</strong>每學年編列常態性藝才班業務費與設備維護預算，並有熱心熱忱之美術班家長後援會全力奧援。</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- QA 5 -->
+        <div class="qa-card" data-category="admin">
+          <div class="qa-header">
+            <span class="q-badge">Q5 112年評鑑追蹤</span>
+            <h3 class="q-title">上一輪（112年）評鑑委員曾指出「課程稍趨保守」、「欠缺外聘師資」，本屆有何徹底轉變？</h3>
+            <span class="chevron">▼</span>
+          </div>
+          <div class="qa-body">
+            <div class="ans-block">
+              <span class="ans-label">🎯 應答核心主軸：</span>
+              <p>「五大期許全面達標，展現強大校務改革動能。」</p>
+            </div>
+            <div class="ans-detail">
+              <h4>對照成效：</h4>
+              <ul>
+                <li><strong>師資突破：</strong>引進5位橫跨電繪、雷雕、產品設計、陶藝的外聘名師，突破傳統水墨西畫單一範疇。</li>
+                <li><strong>課程活化：</strong>七年級「藝術創作初探」、八年級「複合媒材」、九年級「立體造型」，不再以應試臨摹為主，全面強化創意發想。</li>
+                <li><strong>獎金加碼：</strong>積極自籌經費，大幅調高校內美術競賽優秀獎學金。</li>
+                <li><strong>畢業展年級任務分工：</strong>畢業展九年級策展主體、七八年級全面參與開幕演出與場地接待，實踐傳承美德。</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- QA 6 -->
+        <div class="qa-card" data-category="future">
+          <div class="qa-header">
+            <span class="q-badge">Q6 全校性美育輻射</span>
+            <h3 class="q-title">如何避免美術班成為資源集中的「特權專班」？如何落實美感全校共享？</h3>
+            <span class="chevron">▼</span>
+          </div>
+          <div class="qa-body">
+            <div class="ans-block">
+              <span class="ans-label">🎯 應答核心主軸：</span>
+              <p>「圖書館美學聚落共享、公共走廊藝廊化、普通班學生共同參與藝文週。」</p>
+            </div>
+            <div class="ans-detail">
+              <h4>具體作法：</h4>
+              <ul>
+                <li><strong>圖書館全面開放：</strong>將美術班優秀作品長期常態展示於新落成之溫馨圖書館，全校近千名師生均在相同美感場域中閱讀與學習。</li>
+                <li><strong>校園公共藝術與彩繪：</strong>美術班師生帶領普通班同學共同執行校園洗手台、樓梯轉角的美感彩繪，讓美育成為全校生活日常。</li>
+                <li><strong>校慶美展全校徵件：</strong>美術班教師主動協助指導普通班對繪畫有興趣之學生，擴大得獎廣度。</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- QA 7 -->
+        <div class="qa-card" data-category="faculty">
+          <div class="qa-header">
+            <span class="q-badge">Q7 教師研究與成長</span>
+            <h3 class="q-title">面對 AI 繪圖與數位科技浪潮，學校美術班教師如何應對與自我充實？</h3>
+            <span class="chevron">▼</span>
+          </div>
+          <div class="qa-body">
+            <div class="ans-block">
+              <span class="ans-label">🎯 應答核心主軸：</span>
+              <p>「手繪基本功無可取代，數位工具成為激發創意的加速器。」</p>
+            </div>
+            <div class="ans-detail">
+              <h4>具體作法：</h4>
+              <ul>
+                <li>教師研習引進 Canva、數位繪圖與生成美學討論，引導學生思考「原創美學感知」的本質。</li>
+                <li>電腦教室配置專業繪圖板與雷雕軟體，九年級學生能自行將手繪線稿轉為數位向量檔，進行雷射切割立體模型組裝。</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- QA 8 -->
+        <div class="qa-card" data-category="admin">
+          <div class="qa-header">
+            <span class="q-badge">Q8 招生永續發展</span>
+            <h3 class="q-title">面對少子化與鄰近學校競爭，南投國中美術班未來的招生利基與策略為何？</h3>
+            <span class="chevron">▼</span>
+          </div>
+          <div class="qa-body">
+            <div class="ans-block">
+              <span class="ans-label">🎯 應答核心主軸：</span>
+              <p>「優質升學口碑、八大專業工坊全南投最齊全、深厚在地家長信賴。」</p>
+            </div>
+            <div class="ans-detail">
+              <h4>具體作法：</h4>
+              <ul>
+                <li>連續多年超過五成錄取明星公立高中美術班與高職設計科，升學榜單就是最佳品牌。</li>
+                <li>主動走入國小端辦理「國小高年級美感試探營」與國小美術班聯展，深耕基層美術種子。</li>
+                <li>每年畢業美展廣邀南投各國小校長與親師生蒞臨，建立無縫銜接的在地招生生態圈。</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- 模式 C：訪視流程與動線導覽 (Agenda & Tour)     -->
+    <!-- ========================================== -->
+    <section id="view-agenda" class="view-panel">
+      <div class="section-hero">
+        <div class="section-title-wrap">
+          <span class="section-tag">Mode C ｜ Schedule & Tour</span>
+          <h2>🗺️ 評鑑訪視當日時程表、走訪動線與司儀主持詞</h2>
+          <p>掌握訪視當日每分每秒節奏，明列走訪 8 大工坊重點解說詞與場地檢核表，展現南投國中最細膩專業的接待水準。</p>
+        </div>
+      </div>
+
+      <!-- 當日時程時間軸 -->
+      <div class="agenda-container">
+        <h3 class="sub-block-title">⏱️ 當日訪視標準時間流程表</h3>
+        <div class="timeline-list">
+          
+          <div class="timeline-item">
+            <div class="tl-time">08:50 - 09:00<br><span class="duration">10 分鐘</span></div>
+            <div class="tl-content">
+              <div class="tl-title-row">
+                <h4>委員蒞校 ‧ 簽到與相見歡</h4>
+                <span class="loc-badge">校長室 / 貴賓簡報室</span>
+              </div>
+              <p>行政團隊（四處室主任、特教組長）門口迎賓，引導簽到、配掛貴賓識別證、致贈受評資料袋與評鑑手冊。</p>
+              <div class="mc-script">
+                <strong>🎙️ 司儀引導詞：</strong>「各位委員早安，歡迎蒞臨南投國中指導 115 年度藝術才能班訪視評鑑。請委員稍作休息，為您準備了南投在地名茶，稍後我們將展開今日的簡報議程。」
+              </div>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="tl-time">09:00 - 09:10<br><span class="duration">10 分鐘</span></div>
+            <div class="tl-content">
+              <div class="tl-title-row">
+                <h4>開幕致詞與介紹人員</h4>
+                <span class="loc-badge">會議簡報室</span>
+              </div>
+              <p>劉校長松彥致歡迎詞、介紹輔導室與課發團隊、介紹校外諮詢教授（黃嘉勝教授、陳一凡教授）、主席致詞。</p>
+            </div>
+          </div>
+
+          <div class="timeline-item highlight-tl">
+            <div class="tl-time">09:10 - 09:40<br><span class="duration">30 分鐘</span></div>
+            <div class="tl-content">
+              <div class="tl-title-row">
+                <h4>校務評鑑簡報：「孕育一棵藝術大樹」</h4>
+                <span class="loc-badge">大螢幕會議室</span>
+              </div>
+              <p>由<strong>校長 劉松彥 親自主講</strong>，依土壤（行政）、陽光水（師資）、枝幹（課程）、養分（設備）、果實（成果）及年輪淬鍊進行 16 頁精華報告。</p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="tl-time">09:40 - 10:40<br><span class="duration">60 分鐘</span></div>
+            <div class="tl-content">
+              <div class="tl-title-row">
+                <h4>實地環境設備踏查 ‧ 觀課與作品參觀</h4>
+                <span class="loc-badge">美學聚落 ＆ 八大創作基地</span>
+              </div>
+              <p>由特教組長與導師引導委員實地踏查專業教室，見證學生現場分組上課與創作實況（詳見下方走訪動線指引）。</p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="tl-time">10:40 - 11:20<br><span class="duration">40 分鐘</span></div>
+            <div class="tl-content">
+              <div class="tl-title-row">
+                <h4>書面佐證資料檢閱 ＆ 分組親師生座談</h4>
+                <span class="loc-badge">圖書館多功能區 / 會議室</span>
+              </div>
+              <p>分組檢閱六大維度檔案卷夾；委員抽訪教師代表、學生代表、家長代表進行交流晤談。</p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="tl-time">11:20 - 12:00<br><span class="duration">40 分鐘</span></div>
+            <div class="tl-content">
+              <div class="tl-title-row">
+                <h4>綜合座談 ‧ 意見回饋與指導</h4>
+                <span class="loc-badge">貴賓會議室</span>
+              </div>
+              <p>各訪視委員逐一講評、提出具體建言；校長與主任綜合回應；全體合影留念、圓滿閉幕。</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- 實地走訪動線指引 -->
+      <div class="tour-route-container">
+        <h3 class="sub-block-title">🚶 實地走訪動線規劃與現場解說重點</h3>
+        <div class="tour-cards-grid">
+          
+          <div class="tour-card">
+            <div class="tc-step">第一站</div>
+            <h4>迎賓大廳 ＆ 電視牆展區</h4>
+            <span class="tc-focus">解說重點：</span>
+            <p>展示橫式迎賓海報與學生獲獎電子畫冊，展現全校師生誠摯歡迎與近年六大類美展霸榜戰績。</p>
+            <div class="tour-thumb-box">
+              <img src="南投國中藝才班評鑑歡迎海報-橫式螢幕展示版.png" alt="南投國中藝才班評鑑歡迎海報" class="poster-thumbnail">
+            </div>
+          </div>
+
+          <div class="tour-card">
+            <div class="tc-step">第二站</div>
+            <h4>圖書館 ‧ 全校美學聚落</h4>
+            <span class="tc-focus">解說重點：</span>
+            <p>展示美術班作品如何走入公共空間，挑高自然採光與常設藝廊，呈現「境教之美、全校共享」之核心價值。</p>
+          </div>
+
+          <div class="tour-card">
+            <div class="tc-step">第三站</div>
+            <h4>水墨書法 ＆ 素描水彩教室</h4>
+            <span class="tc-focus">解說重點：</span>
+            <p>觀摩七、八年級分組教學，學生現場執筆揮毫與石膏靜物素描，展現穩固厚實的學院派手繪基本功。</p>
+          </div>
+
+          <div class="tour-card">
+            <div class="tc-step">第四站</div>
+            <h4>立體工坊 ＆ 陶藝電窯室</h4>
+            <span class="tc-focus">解說重點：</span>
+            <p>介紹縣府專案補助之高溫側開電窯安全控溫系統、拉胚機設備，展示學生陶藝與翻糖食藝跨域作品。</p>
+          </div>
+
+          <div class="tour-card">
+            <div class="tc-step">第五站</div>
+            <h4>雷雕多媒體電腦教室</h4>
+            <span class="tc-focus">解說重點：</span>
+            <p>學生現場示範繪圖軟體建模與雷射切割機操作，解說「藝師藝友木工文創」產學實作進階成果。</p>
+          </div>
+
+          <div class="tour-card">
+            <div class="tc-step">第六站</div>
+            <h4>專業展覽廳（佈展教學）</h4>
+            <span class="tc-focus">解說重點：</span>
+            <p>介紹專業調光投射軌道、九年級學生自主策展佈局，展現「佈展即教學」之實踐成果。</p>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- 現場接待檢核清單 -->
+      <div class="checklist-container">
+        <h3 class="sub-block-title">📋 訪視接待工作檢核清單 (Checklist)</h3>
+        <div class="check-grid">
+          <label class="check-item"><input type="checkbox" checked> 委員名牌與識別證備妥</label>
+          <label class="check-item"><input type="checkbox" checked> 桌上紙本評鑑報告書與成果畫冊已整齊陳列</label>
+          <label class="check-item"><input type="checkbox" checked> 簡報室投影設備、簡報筆、麥克風測試無誤</label>
+          <label class="check-item"><input type="checkbox" checked> 八大專業教室動線指引牌與安全通道暢通</label>
+          <label class="check-item"><input type="checkbox" checked> 教室實作學生與觀課班級教師定位就緒</label>
+          <label class="check-item"><input type="checkbox" checked> 六大維度佐證卷夾檔案齊備（附標籤目錄）</label>
+          <label class="check-item"><input type="checkbox" checked> 迎賓茶水、在地特色茶點、文具筆記紙備齊</label>
+          <label class="check-item"><input type="checkbox" checked> 綜合座談紀錄員與照相攝影人員工作交代完畢</label>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- 模式 D：評鑑現場紀錄與追蹤 (Live Records)     -->
+    <!-- ========================================== -->
+    <section id="view-records" class="view-panel">
+      <div class="section-hero">
+        <div class="section-title-wrap">
+          <span class="section-tag">Mode D ｜ Evaluation Live Sheet</span>
+          <h2>📝 評鑑委員現場提問與建議即時紀錄表</h2>
+          <p>供現場特教組、輔導室或行政同仁即時打字登記委員提問與建議，即時生成追蹤改善方案，支援一鍵列印與匯出！</p>
+        </div>
+        <div class="records-actions-bar">
+          <button class="btn-primary" id="btnAddNewRecord">➕ 新增委員提問紀錄</button>
+          <button class="btn-secondary" id="btnExportMarkdown">📋 複製為 Markdown</button>
+          <button class="btn-secondary" id="btnPrintRecords">🖨️ 列印此紀錄表</button>
+          <button class="btn-danger" id="btnResetRecords">🔄 重設範例資料</button>
+        </div>
+      </div>
+
+      <!-- 海報放大預覽 Modal -->
+      <div class="modal-overlay" id="posterModal">
+        <div class="modal-card poster-modal-card">
+          <div class="modal-header">
+            <h3>電視牆橫式迎賓展示海報</h3>
+            <button class="modal-close-btn" id="posterModalCloseBtn">&times;</button>
+          </div>
+          <div class="modal-body text-center">
+            <img src="南投國中藝才班評鑑歡迎海報-橫式螢幕展示版.png" alt="南投國中藝才班評鑑歡迎海報" class="modal-poster-img">
+          </div>
+        </div>
+      </div>
+
+      <!-- 新增/編輯紀錄對話方塊 (Modal) -->
+      <div class="modal-overlay" id="recordModal">
+        <div class="modal-card">
+          <div class="modal-header">
+            <h3 id="modalTitle">新增委員提問與建議</h3>
+            <button class="modal-close-btn" id="modalCloseBtn">&times;</button>
+          </div>
+          <div class="modal-body">
+            <form id="recordForm">
+              <input type="hidden" id="recId">
+              <div class="form-row">
+                <div class="form-group col-6">
+                  <label for="recCommittee">委員姓名 / 單位：</label>
+                  <input type="text" id="recCommittee" placeholder="例如：黃教授 / 評鑑委員A" required>
+                </div>
+                <div class="form-group col-6">
+                  <label for="recCategory">評鑑維度：</label>
+                  <select id="recCategory">
+                    <option value="行政與管理">土壤：行政與管理</option>
+                    <option value="師資與研究">陽光水：師資與研究</option>
+                    <option value="課程與教學">枝幹：課程與教學</option>
+                    <option value="經費與設備">養分：經費與設備</option>
+                    <option value="成果與特色">果實：成果與特色</option>
+                    <option value="綜合建議">綜合回饋與其他</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="recQuestion">委員提問重點 / 評鑑意見：</label>
+                <textarea id="recQuestion" rows="3" placeholder="請精確記錄委員提問或讚許意見..." required></textarea>
+              </div>
+              <div class="form-group">
+                <label for="recResponse">學校現場回應摘要：</label>
+                <textarea id="recResponse" rows="3" placeholder="記錄校長或主任現場之具體說明與回覆..."></textarea>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-6">
+                  <label for="recAction">後續追蹤 / 改善措施：</label>
+                  <input type="text" id="recAction" placeholder="例如：納入下學期課發小組研議編入計畫">
+                </div>
+                <div class="form-group col-3">
+                  <label for="recDept">主責處室：</label>
+                  <input type="text" id="recDept" placeholder="輔導室/特教組" value="輔導室特教組">
+                </div>
+                <div class="form-group col-3">
+                  <label for="recStatus">追蹤狀態：</label>
+                  <select id="recStatus">
+                    <option value="現場已釐清">現場已釐清</option>
+                    <option value="列入改善追蹤">列入改善追蹤</option>
+                    <option value="持續精進研議">持續精進研議</option>
+                  </select>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn-secondary" id="modalCancelBtn">取消</button>
+                <button type="submit" class="btn-primary" id="modalSaveBtn">儲存紀錄</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- 紀錄清單表格 -->
+      <div class="records-table-container">
+        <table class="records-table" id="recordsTable">
+          <thead>
+            <tr>
+              <th style="width: 12%;">委員 / 維度</th>
+              <th style="width: 28%;">委員提問與建議意見</th>
+              <th style="width: 28%;">學校現場回應要點</th>
+              <th style="width: 20%;">後續追蹤處室與行動</th>
+              <th style="width: 12%;">狀態 / 操作</th>
+            </tr>
+          </thead>
+          <tbody id="recordsTbody">
+            <!-- 動態資料渲染區 -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- 底部統計摘要 -->
+      <div class="records-summary-card">
+        <div class="summary-item">
+          <span class="sm-lbl">總記錄筆數：</span>
+          <strong id="sumTotal">0</strong> 筆
+        </div>
+        <div class="summary-item">
+          <span class="sm-lbl">現場已釐清：</span>
+          <strong id="sumClarified" class="text-success">0</strong> 筆
+        </div>
+        <div class="summary-item">
+          <span class="sm-lbl">列入改善追蹤：</span>
+          <strong id="sumTracking" class="text-warning">0</strong> 筆
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- 頁尾宣告 -->
+  <footer class="app-footer">
+    <div class="footer-inner">
+      <span>南投縣立南投國民中學 藝術才能美術班 訪視評鑑專用系統</span>
+      <span>•</span>
+      <span>簡報主題：孕育一棵藝術大樹</span>
+      <span>•</span>
+      <span>© 115 學年度 南投國中 版權所有</span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
