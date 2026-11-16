@@ -6,7 +6,38 @@
   <title>115南投國中美術班評鑑 - 孕育一棵藝術大樹</title>
   <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="locked">
+  <!-- 訪視專用密碼門禁保護 (Password: 049) -->
+  <div id="authGateOverlay" class="auth-gate-overlay">
+    <div class="auth-gate-backdrop"></div>
+    <div class="auth-gate-card">
+      <div class="auth-card-top">
+        <div class="auth-icon-wrap">🎨</div>
+        <span class="auth-school-tag">南投縣立南投國民中學</span>
+      </div>
+      <h2 class="auth-card-title">115年度藝術才能美術班評鑑</h2>
+      <p class="auth-card-sub">「孕育一棵藝術大樹」‧ 訪視簡報與應答成果系統</p>
+      
+      <div class="auth-card-body">
+        <label for="authPasswordInput" class="auth-input-lbl">
+          <span class="lock-icon">🔒</span> 請輸入訪問門禁密碼：
+        </label>
+        <div class="auth-input-box">
+          <input type="password" id="authPasswordInput" class="auth-pwd-input" placeholder="請輸入門禁密碼..." maxlength="20" autocomplete="off" autofocus>
+          <button type="button" id="btnAuthSubmit" class="auth-submit-btn">驗證進入</button>
+        </div>
+        <div id="authErrorMsg" class="auth-error-msg"></div>
+        <div class="auth-hint-box">
+          <span class="hint-icon">💡</span> <strong>門禁密碼提示</strong>：南投在地市話區碼（3 碼數字）
+        </div>
+      </div>
+
+      <div class="auth-card-footer">
+        <span>內部受評專用系統 ‧ 門禁密碼保護</span>
+      </div>
+    </div>
+  </div>
+
   <!-- 頂部常駐導覽列 -->
   <header class="navbar" id="navbar">
     <div class="nav-brand">
@@ -70,6 +101,11 @@
       <!-- 全螢幕切換 -->
       <button class="ctrl-btn icon-only-btn" id="btnFullscreen" title="切換全螢幕檢視">
         <span id="fsIcon">⛶</span>
+      </button>
+
+      <!-- 重新上鎖按鈕 -->
+      <button class="ctrl-btn icon-only-btn" id="btnLockSite" title="鎖定系統 (密碼：049)">
+        <span>🔒</span>
       </button>
     </div>
   </header>
@@ -1655,6 +1691,14 @@
                 <button type="button" class="btn-primary btn-copy-url" data-target="shortUrlInput">複製</button>
               </div>
             </div>
+
+            <div class="url-share-group">
+              <label>🔐 系統門禁訪問密碼：</label>
+              <div class="url-copy-box">
+                <input type="text" readonly value="049" id="pwdShareInput" style="font-weight:800; font-size:1.1rem; color:var(--accent); letter-spacing:1px;">
+                <button type="button" class="btn-primary btn-copy-url" data-target="pwdShareInput">複製密碼</button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -1872,6 +1916,9 @@
             <div class="ptc-info-item">
               <span class="ptc-tag">簡報與系統網址</span>
               <span class="ptc-url-text">https://tinyurl.com/2y3hace2</span>
+              <div style="margin-top:0.4rem;">
+                <span class="sc-badge" style="background:var(--accent); color:#ffffff; font-size:0.9rem; padding:0.25rem 0.65rem;">🔐 訪問密碼：049</span>
+              </div>
             </div>
             <div class="ptc-info-item">
               <span class="ptc-tag">系統收錄內容</span>

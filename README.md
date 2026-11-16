@@ -14,6 +14,8 @@
 ## 線上公開網址 (GitHub Pages)
 - **完整公開網址**：https://yaoshuchin.github.io/1151113-nantou-art-eval/
 - **快速短網址**：https://tinyurl.com/2y3hace2 （備用短網址：https://is.gd/pXbyOS ）
+- **🔐 訪問門禁密碼**：`049` （南投在地市話區碼 3 碼數字）
+- **免輸入密碼直通網址**：https://yaoshuchin.github.io/1151113-nantou-art-eval/?pwd=049
 
 ## 行動裝置掃碼 QR Code
 <p align="center">

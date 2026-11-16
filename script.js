@@ -5,6 +5,88 @@
 
 document.addEventListener("DOMContentLoaded", () => {
   // ==========================================
+  // 0. 系統門禁密碼驗證模組 (Password: 049)
+  // ==========================================
+  const AUTH_KEY = "ntjh_art_auth_passed";
+  const CORRECT_PWD = "049";
+  const authOverlay = document.getElementById("authGateOverlay");
+  const authInput = document.getElementById("authPasswordInput");
+  const authSubmit = document.getElementById("btnAuthSubmit");
+  const authError = document.getElementById("authErrorMsg");
+  const btnLockSite = document.getElementById("btnLockSite");
+
+  function unlockSystem() {
+    document.body.classList.remove("locked");
+    localStorage.setItem(AUTH_KEY, "true");
+    if (authError) authError.textContent = "";
+    if (authInput) authInput.value = "";
+  }
+
+  function lockSystem() {
+    localStorage.removeItem(AUTH_KEY);
+    document.body.classList.add("locked");
+    if (authError) authError.textContent = "";
+    if (authInput) {
+      authInput.value = "";
+      setTimeout(() => authInput.focus(), 150);
+    }
+  }
+
+  function verifyPassword() {
+    if (!authInput) return;
+    const entered = authInput.value.trim();
+    if (entered === CORRECT_PWD) {
+      unlockSystem();
+    } else {
+      if (authError) {
+        authError.textContent = "❌ 門禁密碼錯誤，請重新輸入（提示：南投區碼 049）";
+      }
+      const card = document.querySelector(".auth-gate-card");
+      if (card) {
+        card.classList.remove("shake");
+        void card.offsetWidth; // 強制重繪觸發動畫
+        card.classList.add("shake");
+        setTimeout(() => card.classList.remove("shake"), 500);
+      }
+      authInput.focus();
+      authInput.select();
+    }
+  }
+
+  // 檢查 URL query param (?pwd=049 或 ?pass=049)
+  const urlParams = new URLSearchParams(window.location.search);
+  const paramPwd = urlParams.get("pwd") || urlParams.get("pass");
+  if (paramPwd === CORRECT_PWD) {
+    unlockSystem();
+  } else if (localStorage.getItem(AUTH_KEY) === "true") {
+    unlockSystem();
+  } else {
+    document.body.classList.add("locked");
+    if (authInput) {
+      setTimeout(() => authInput.focus(), 200);
+    }
+  }
+
+  if (authSubmit) {
+    authSubmit.addEventListener("click", verifyPassword);
+  }
+
+  if (authInput) {
+    authInput.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        verifyPassword();
+      }
+    });
+  }
+
+  if (btnLockSite) {
+    btnLockSite.addEventListener("click", () => {
+      lockSystem();
+    });
+  }
+
+  // ==========================================
   // 1. 全域狀態管理與偏好設定 (Theme & Font)
   // ==========================================
   const htmlRoot = document.documentElement;
